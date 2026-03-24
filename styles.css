@@ -79,26 +79,129 @@ margin-top:0;
 color:#1a73e8;
 }
 
-.play-store-cta{
-text-align:center;
-margin:40px 0 10px;
+.hero{
+background:linear-gradient(180deg,#ffffff 0%,#eef3fb 100%);
+border-bottom:1px solid #dde5f0;
+padding:36px 20px 44px;
 }
 
-.btn-play-store{
-display:inline-block;
-padding:14px 28px;
-background:#01875f;
-color:white;
-text-decoration:none;
-border-radius:8px;
+.hero-inner{
+max-width:1000px;
+margin:0 auto;
+}
+
+.hero-layout{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:space-between;
+gap:32px;
+}
+
+.hero-copy{
+flex:1 1 320px;
+min-width:0;
+}
+
+.hero-kicker{
+margin:0 0 8px;
+font-size:13px;
 font-weight:bold;
-font-size:16px;
-box-shadow:0 2px 8px rgba(0,0,0,0.15);
+letter-spacing:0.04em;
+text-transform:uppercase;
+color:#1558b0;
 }
 
-.btn-play-store:hover{
-background:#016b4c;
-color:white;
+.hero-title{
+margin:0 0 12px;
+font-size:clamp(1.55rem,4vw,2.1rem);
+line-height:1.2;
+color:#1a2a3a;
+}
+
+.hero-lead{
+margin:0 0 16px;
+font-size:1.05rem;
+color:#444;
+max-width:36em;
+}
+
+.hero-benefits{
+margin:0 0 22px;
+padding-left:1.15em;
+color:#333;
+}
+
+.hero-benefits li{
+margin-bottom:8px;
+}
+
+.hero-trust{
+margin:18px 0 0;
+font-size:14px;
+}
+
+.hero-trust a{
+color:#1a73e8;
+}
+
+.hero-trust a:hover{
+text-decoration:underline;
+}
+
+.hero-visual{
+flex:0 0 auto;
+text-align:center;
+}
+
+.hero-visual img{
+width:140px;
+height:auto;
+border-radius:28px;
+box-shadow:0 8px 28px rgba(26,115,232,0.2);
+}
+
+.play-store-row{
+display:flex;
+flex-wrap:wrap;
+align-items:center;
+justify-content:flex-start;
+gap:16px 20px;
+}
+
+.play-store-row--footer{
+justify-content:center;
+}
+
+.play-badge-link{
+display:inline-block;
+line-height:0;
+}
+
+.play-badge-img{
+width:200px;
+max-width:min(220px,70vw);
+height:auto;
+}
+
+.cta-final{
+text-align:center;
+margin:48px 0 8px;
+padding:32px 20px;
+background:white;
+border-radius:12px;
+box-shadow:0 3px 14px rgba(0,0,0,0.08);
+}
+
+.cta-final-title{
+margin:0 0 8px;
+color:#1a73e8;
+font-size:1.45rem;
+}
+
+.cta-final-text{
+margin:0 0 20px;
+color:#444;
 }
 
 .links{
@@ -171,4 +274,24 @@ margin-left:20px;
 margin-top:40px;
 font-size:14px;
 color:#777;
+}
+
+@media (max-width:640px){
+.hero-layout{
+flex-direction:column;
+align-items:stretch;
+}
+
+.hero-visual{
+order:-1;
+}
+
+.play-store-row{
+flex-direction:column;
+align-items:center;
+}
+
+.play-badge-link{
+align-self:center;
+}
 }
