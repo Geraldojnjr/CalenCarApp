@@ -21,9 +21,9 @@ max-width:100%;
 margin:0;
 padding:0;
 display:block;
-background:#1a73e8;
-color:#fff;
-text-align:center;
+background:transparent;
+color:inherit;
+text-align:left;
 }
 
 #site-header header{
