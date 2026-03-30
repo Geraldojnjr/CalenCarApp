@@ -21,30 +21,46 @@
 
 <div class="version">
 
-<h3>Versão 1.2.50</h3>
+<h3>Versão 1.2.53</h3>
 
 <ul>
-<li>Configurações avançadas: em “configurações por tipo de manutenção”, agora existe apenas um botão <em>Salvar</em> no final da página; ao salvar, grava todas as alterações de uma vez e mostra confirmação via Snackbar.</li>
+<li>Modo viagem: gravação OBD2 durante o trajecto (amostras a cada 5 s com os sensores disponíveis no VehicleData) quando o adaptador está ligado no ecrã Scanner; persistência Room na tabela trip_obd_samples com migração da base 15 para 16.</li>
+<li>Modo viagem: ao finalizar, relatório OBD2 textual (média/mín/máx dos valores registados) incluído no resumo da viagem; amostras da sessão removidas após gerar o relatório; sessão associada ao veículo via preferências (início de viagem com UUID).</li>
+<li>Modo viagem: texto de ajuda sobre ligar o Scanner durante a viagem para gravar OBD2.</li>
+<li>Modo viagem: diálogo Finalizar viagem — quilometragem final só com dígitos, sem separador de milhares.</li>
+<li>Modo viagem: histórico de relatórios por veículo (lista de viagens concluídas); ao tocar, diálogo com km percorridos, período e sensores em linhas (estilo dados ao vivo), sem a frase sobre quilometragem do veículo atualizada; JSON estruturado (obdMetricsJson) e migração Room 17 para 18; entradas antigas convertidas via texto legado.</li>
+<li>Modo viagem: dados OBD2 ao vivo — mesmos itens que em Escolher dados (Modo Viagem) no Scanner; botões Mostrar/Ocultar; última leitura publicada durante a gravação (TripObdLatestReadStore); preferências partilhadas obd2_preferences com o ecrã Scanner (ObdTripMetricsDisplay).</li>
+<li>Modo viagem: removido relatório parcial estatístico durante a viagem (mantém-se apenas dados ao vivo opcionais e o relatório ao finalizar).</li>
+<li>Modo viagem: estimativa de consumo (litros usados, consumo médio L/100 km e rendimento km/L) via MAF e integração da velocidade OBD; incluída no texto do relatório ao finalizar, nas primeiras linhas do histórico e no JSON persistido (footerDisclaimer para aviso em vermelho).</li>
+<li>Modo viagem: diálogo do histórico — aviso «Aproximação via MAF (gasolina)…» em vermelho colado ao bloco de consumo, sem linha de métrica no meio da lista; secção «Sensores» separada por divisor.</li>
 </ul>
 
 </div>
 
 <div class="version">
 
-<h3>Versão 1.2.49</h3>
+<h3>Versão 1.2.52</h3>
 
 <ul>
-<li>Quilometragem: removidos campos de “Odômetro” na interface, mantendo apenas a “Quilometragem” (registro, abastecimento, viagem e widgets).</li>
+<li>Painel OBD2 (menu lateral): nova tela "Painel OBD2" com dados em tempo real, analise de saude do motor (OK / atencao / critico), alertas inteligentes, pontuacao de conducao e cartao de alerta vermelho com Snackbar.</li>
+<li>Historico OBD2 no Room: amostras de RPM, velocidade, temperatura e carga gravadas a cada 5 s; migracao da base de dados 14 para 15 (tabelas de amostras, viagens OBD e eventos de alerta).</li>
+<li>Viagens OBD automaticas: deteccao de inicio/fim de percurso com registo na base; relatorio dos ultimos 7 dias (km, medias, alertas); graficos das ultimas 24 h com MPAndroidChart (temperatura, RPM, velocidade).</li>
+<li>Modo viagem: e possivel ter viagem em curso em varios veiculos ao mesmo tempo (estado guardado por carro nas preferencias); removido o bloqueio que impedia iniciar viagem noutro carro.</li>
+<li>Legibilidade do Painel do veiculo em tema escuro: texto escuro nos cards brancos, tipografia maior e espacamento; botoes e graficos com contraste adequado; relatorio semanal em varias linhas.</li>
 </ul>
 
 </div>
 
 <div class="version">
 
-<h3>Versão 1.2.48</h3>
+<h3>Versão 1.2.51</h3>
 
 <ul>
-<li>Configurações: ao atualizar o KM do carro selecionado, passa a mostrar feedback (Snackbar) de sucesso ou falha.</li>
+<li>Scanner OBD2 (ELM327 via Bluetooth Classic/SPP): nova tela "Scanner" no menu lateral para conectar ao adaptador e visualizar dados em tempo real.</li>
+<li>Diagnostico em tempo real: loop de leitura a cada 1s com cards configuraveis.</li>
+<li>Checklist de sensores: usuario escolhe quais dados exibir; selecao persistida localmente.</li>
+<li>Novos sensores suportados (quando disponiveis no veiculo): temperatura de admissao, posicao do acelerador, MAF, tensao do modulo, MAP, nivel de combustivel, avanço de ignicao, tempo desde partida, pressao barometrica, temperatura ambiente, temperatura do oleo, distancia desde limpar DTC, distancia com MIL ligada e pressao de combustivel.</li>
+<li>Simulacao (sem Bluetooth): modo de teste que simula respostas do ELM327 para validar a UI e o parsing sem scanner fisico.</li>
 </ul>
 
 </div>
@@ -54,9 +70,7 @@
 <h3>Versão 1.2.47</h3>
 
 <ul>
-<li>Removida a funcionalidade de meta de gastos (orçamento mensal): card na Home, diálogo para definir valor, BudgetViewModel e preferências associadas.</li>
-<li>Avaliação do app: popup agora evita reaparecer após indicar que já avaliou; “Não agora” adia o pedido.</li>
-<li>Configurações: ao atualizar o KM do carro selecionado, passa a mostrar feedback (Snackbar) de sucesso ou falha.</li>
+<li>Removida a funcionalidade de meta de gastos (orçamento mensal): card na Home, dialogo para definir valor, BudgetViewModel e preferencias monthly_budget_* associadas.</li>
 </ul>
 
 </div>
@@ -66,8 +80,8 @@
 <h3>Versão 1.2.46</h3>
 
 <ul>
-<li>Campos de data: toque em qualquer parte do campo abre o seletor de data, não apenas no ícone.</li>
-<li>Quilometragem sem separador de milhares (apenas dígitos): adicionar/editar veículo, abastecimento e manutenção; diálogo Registrar quilometragem; KM atual em Configurações (carro selecionado); Configurações avançadas (KM padrão por tipo, tipos customizados e diálogo de novo tipo customizado).</li>
+<li>Campos de data (DatePickerField): toque em qualquer parte do campo abre o seletor de data, nao apenas no icone.</li>
+<li>Quilometragem sem separador de milhares (apenas digitos): adicionar/editar veiculo, abastecimento e manutencao; dialogo Registrar quilometragem; KM atual em Configuracoes (carro selecionado); Configuracoes avancadas (KM padrao por tipo, tipos customizados e dialogo de novo tipo customizado).</li>
 </ul>
 
 </div>
@@ -77,8 +91,8 @@
 <h3>Versão 1.2.45</h3>
 
 <ul>
-<li>Tela Sobre: adicionados links para "Página do app" e "Release notes", mantendo também o acesso à política de privacidade.</li>
-<li>Demonstrativos: correção no cálculo da média mensal e da previsão anual para manutenções recorrentes por intervalo em meses (ex.: 1200 a cada 3 meses passa a 400/mês e 4800/ano).</li>
+<li>Tela Sobre: adicionados links para "Pagina do app" e "Release notes", mantendo tambem o acesso a politica de privacidade.</li>
+<li>Demonstrativos: correcao no calculo da media mensal e da previsao anual para manutencoes recorrentes por intervalo em meses (ex.: 1200 a cada 3 meses passa a 400/mês e 4800/ano).</li>
 </ul>
 
 </div>
@@ -102,7 +116,7 @@
 <li>Premium: sincronizacao na abertura passa a considerar apenas compras com estado PURCHASED para evitar manter premium ativo apos cancelamento da assinatura.</li>
 <li>Premium: quando a validacao com a Play Store falha na abertura, o app limpa o premium local para evitar estado "premium preso".</li>
 <li>UI: app bloqueado em orientacao retrato (portrait) para evitar quebra de layout ao girar o celular para horizontal.</li>
-<li>ERRO devido a nao funcionar em 21 dispositivos.</li>
+<li>ERRO devido a nao funcionar em 21 dispositivos</li>
 </ul>
 
 </div>
@@ -114,7 +128,7 @@
 <ul>
 <li>Home: refatoracao em multiplos arquivos para reduzir complexidade da HomeScreen (cards, calendario, drawer, banners, dialogos, acoes rapidas e secoes de conteudo extraidos para composables dedicados).</li>
 <li>Home: criados arquivos de apoio para extensoes e estado de sessao (flags de popup), mantendo o comportamento da tela e melhorando manutencao.</li>
-<li>Testes unitarios: adicionados cenarios para criacao de carro, manutencao e abastecimento (repositories), regras de consumo/custo/gasto mensal de combustivel (use cases), montagem de proximas manutencoes e regras de registro de KM no CarViewModel.</li>
+<li>Testes unitarios: adicionados cenarios para criacao de carro, manutencao e abastecimento (repositories), regras de consumo/custo/gasto mensal de combustivel (use cases), montagem de proximas manutencoes e regras de registro de KM no CarViewModel (incluindo odometro sem regressao, selecao automatica do primeiro carro e limpeza de selecao ao remover o ultimo).</li>
 <li>App startup: ao abrir o app, passa a verificar atualizacao na Play Store e mostrar popup com "Atualizar agora" e "Fechar"; o popup tambem fecha ao tocar fora.</li>
 <li>Premium: ao abrir o app, sincroniza sempre o estado premium com a Play Store via Billing, ativando/removendo premium local conforme compras ativas.</li>
 </ul>
@@ -126,11 +140,12 @@
 <h3>Versão 1.2.41</h3>
 
 <ul>
-<li>Configuracoes avancadas (tipos fixos): tempo de troca em meses para filtros e calibragem de pneus; KM dos filtros continua partilhado entre os tres tipos.</li>
-<li>Nova manutencao: sugestao automatica de "Proxima data" com base nos intervalos das configuracoes avancadas, quando o campo esta vazio e nao foi editado manualmente.</li>
-<li>Campos de KM: correcao da mascara para a digitacao nao alterar a ordem dos algarismos ao inserir no texto ja formatado.</li>
-<li>Valores monetarios: campo de texto livre sem mascara automatica; ao gravar, valor interpretado com formato pt-BR.</li>
-<li>Home: titulo da barra com seta ao lado do nome do veiculo quando existem varios carros, permitindo trocar o veiculo ativo sem abrir a tela de veiculos.</li>
+<li>Configuracoes avancadas (tipos fixos): tempo de troca em meses para filtro de ar, filtro de ar-condicionado, filtro de combustivel e calibragem de pneus; KM dos filtros continua partilhado entre os tres tipos de filtro; backup e restauro incluem estes intervalos.</li>
+<li>Nova manutencao: sugestao automatica de "Proxima data" com base nos intervalos das configuracoes avancadas (oleo, filtros, pneus e tipos customizados), quando o campo esta vazio e nao foi editado manualmente.</li>
+<li>Campos de KM (manutencao, configuracoes, odometro, etc.): correcao da mascara para a digitacao nao alterar a ordem dos algarismos ao inserir no texto ja formatado.</li>
+<li>Valores monetarios (nova/editar manutencao e abastecimento): campo de texto livre sem mascara automatica ao digitar; ao gravar, o valor e interpretado com formato numerico pt-BR (ex.: 1.500,50).</li>
+<li>Utilitario MoneyReaisTextWatcher para EditText (sem formatação forçada); parse monetario reutilizavel em FormatUtils.</li>
+<li>Home: titulo da barra com seta ao lado do nome do veiculo quando existem varios carros; toque abre lista para escolher o veiculo ativo (com indicacao do selecionado) sem abrir o ecra de veiculos.</li>
 </ul>
 
 </div>
@@ -140,11 +155,12 @@
 <h3>Versão 1.2.40</h3>
 
 <ul>
-<li>Home: refinamento visual do menu do botao + (dropdown com estilo mais moderno), mantendo alinhamento com o layout da tela.</li>
-<li>Menu lateral: item "Veiculos" passa a usar icone de carro.</li>
-<li>Menu lateral: item "Checklist de revisao" passa a usar icone de checklist.</li>
-<li>Home: menu de acoes do botao + alterado para layout vertical, com opcoes em coluna e texto ao lado dos icones.</li>
-<li>Home: removido fundo branco do grupo de opcoes do menu +, mantendo apenas botoes com animacao de abertura/fecho.</li>
+<li>Home: refinamento visual do menu do botão <code>+</code> (dropdown com estilo mais moderno) mantendo o alinhamento com o layout da tela.</li>
+<li>Menu lateral: item "Veiculos" passa a usar ícone de carro, em vez do ícone genérico de informação.</li>
+<li>Menu lateral: item "Checklist de revisao" passa a usar ícone de checklist, alinhado com a funcionalidade.</li>
+<li>Home: menu de acoes do botão <code>+</code> alterado para layout vertical (em vez de circular/fileira horizontal), com opcoes em coluna.</li>
+<li>Home: opcoes do menu <code>+</code> agora mostram texto ao lado do ícone (Carro, Combustivel e Manutencao) para melhorar legibilidade.</li>
+<li>Home: removido o fundo branco do grupo de opcoes do menu <code>+</code>, mantendo apenas os botoes com animacao de abertura/fecho.</li>
 </ul>
 
 </div>
@@ -154,9 +170,9 @@
 <h3>Versão 1.2.39</h3>
 
 <ul>
-<li>Home: menu no botao + (Adicionar carro/combustivel/manutencao) com melhor posicionamento, mantendo alinhamento ao layout.</li>
-<li>Proximas manutencoes: ordenacao ajustada para priorizar as que expiram primeiro.</li>
-<li>Editar manutencao: "Oficinas proximas" nao aparece automaticamente; mostra apenas apos digitar endereco ou usar localizacao atual, e quando nome do local estiver vazio.</li>
+<li>Home: menu no botão <code>+</code> (Adicionar carro/combustível/manutenção) com melhor posicionamento, mantendo o botão alinhado ao restante do layout.</li>
+<li>Proximas manutencoes: ordenacao ajustada para priorizar as que expiram primeiro (vencidas primeiro, depois menor prazo em dias e, em empate/sem data, menor KM restante).</li>
+<li>Editar manutencao: "Oficinas proximas" nao aparece automaticamente; passa a mostrar apenas apos digitar endereco ou usar localizacao atual, e somente quando o nome do local ainda estiver vazio.</li>
 </ul>
 
 </div>
@@ -166,10 +182,10 @@
 <h3>Versão 1.2.38</h3>
 
 <ul>
-<li>Configuracoes: criada pagina dedicada para "Configuracoes tipos de manutencoes" dentro das configuracoes avancadas, com valores padrao por tipo.</li>
-<li>Configuracoes: ao criar tipo customizado, app pede nome, KM de troca e tempo de troca em meses.</li>
-<li>Manutencao: para tipo customizado com "Proxima Data" em branco, sugestao usa tempo padrao configurado; "Proximo KM" continua por "KM Troca + intervalo".</li>
-<li>Backup/restauro: defaults dos tipos customizados (KM e meses) passam a ser guardados e restaurados corretamente.</li>
+<li>Configurações: criada uma pagina dedicada para "Configurações tipos de manutenções" dentro das configurações avançadas, com valores padrão (KM e tempo em meses) por tipo.</li>
+<li>Configurações: ao criar um novo tipo customizado, o app pede nome, KM de troca e tempo de troca em meses (ex.: correia dentada -&gt; KM 5000 e 36 meses).</li>
+<li>Manutenção: se o tipo for customizado e "Próxima Data" estiver em branco, a sugestão passa a usar o tempo padrão (meses) configurado para o tipo; "Próximo KM" continua a usar "KM Troca + intervalo" também por tipo.</li>
+<li>Backup/restauro: os defaults (KM e tempo em meses) dos tipos customizados agora também são guardados no backup e restaurados corretamente.</li>
 </ul>
 
 </div>
@@ -179,8 +195,8 @@
 <h3>Versão 1.2.37</h3>
 
 <ul>
-<li>Adicionar/editar manutencao: ao abrir "Nova manutencao", campo "KM Troca" vem preenchido com o KM atual do veiculo selecionado.</li>
-<li>Adicionar/editar manutencao: quando "Proximo KM" fica vazio, passa a ser calculado automaticamente como "KM Troca + intervalo" das configuracoes avancadas para o tipo.</li>
+<li>Adicionar/editar manutencao: ao abrir "Nova manutencao", o campo "KM Troca" vem automaticamente preenchido com o "KM atual" do veiculo selecionado.</li>
+<li>Adicionar/editar manutencao: quando "Proximo KM" fica vazio, passa a ser calculado automaticamente como "KM Troca + intervalo" definido em Configuracoes Avancadas para o tipo de manutencao; ao editar manualmente, a sugestao nao sobrescreve.</li>
 </ul>
 
 </div>
@@ -190,10 +206,10 @@
 <h3>Versão 1.2.36</h3>
 
 <ul>
-<li>Modo viagem: lista com scroll confiavel e botao "Finalizar viagem" com cores primary/onPrimary para contraste em qualquer tema.</li>
-<li>Proximas manutencoes (Home): texto do aviso sem repeticao de dias e sufixo alinhado a "Faltam X dias" e km quando aplicavel.</li>
-<li>Modo viagem: corpo da tela dentro de Box/Column com fillMaxSize + verticalScroll para corrigir cenario em que o conteudo nao deslizava.</li>
-<li>Restauro de backup: ao concluir com sucesso, limpa estado de modo viagem em SharedPreferences para evitar desalinhamento com base restaurada.</li>
+<li>Modo viagem: lista com scroll confiavel (Column com fillMaxWidth em vez de fillMaxSize junto ao verticalScroll); botao "Finalizar viagem" com cores primary/onPrimary para contrastar com o cartao em qualquer tema (incl. Material You).</li>
+<li>Proximas manutencoes (cartoes na Home): texto do aviso sem repetir dias; removido o trecho redundante "Em X dia(s)" quando a mensagem inteligente ja indica os dias; sufixo alinhado a "Faltam X dias" e km quando aplicavel.</li>
+<li>Modo viagem: corpo do ecran dentro de Box fillMaxSize com Column fillMaxSize + verticalScroll, para o scroll ter altura de viewport limitada (corrige cenario pos-restauro em que o conteudo nao deslizava e o botao Finalizar podia ficar inacessivel).</li>
+<li>Restauro de backup: ao concluir com sucesso, limpa o estado do modo viagem em SharedPreferences (nao faz parte do backup), evitando IDs de veiculo e checklist desalinhados com a base restaurada.</li>
 </ul>
 
 </div>
@@ -203,9 +219,9 @@
 <h3>Versão 1.2.35</h3>
 
 <ul>
-<li>Notificacoes (Android 13+): apos recusa, fluxo permite pedir novamente quando o SO permitir ou abrir definicoes de notificacoes da app.</li>
-<li>Home: removido botao "Abrir definicoes" do cartao de notificacoes; fluxo continua pelo botao "Permitir notificacoes".</li>
-<li>Modo viagem: conteudo da tela com scroll vertical para manter "Finalizar viagem" e resumo acessiveis apos checklist.</li>
+<li>Notificacoes (Android 13+): apos recusar no dialogo do sistema, e possivel voltar a pedir quando o SO permitir (shouldShowRequestPermissionRationale) ou abrir diretamente as definicoes de notificacoes da app; ao voltar a Home (ON_RESUME) o aviso reaparece se a permissao continuar negada e o utilizador nao tiver fechado o cartao com X; preferencias para banner dispensado e estado de recusa.</li>
+<li>Home: removido o botao "Abrir definicoes" do cartao de notificacoes; o fluxo para conceder permissao ou abrir as definicoes da app continua apenas pelo botao "Permitir notificacoes".</li>
+<li>Modo viagem: conteudo da tela com scroll vertical para o cartao "Finalizar viagem" e o resumo ficarem acessiveis apos o checklist.</li>
 </ul>
 
 </div>
@@ -215,9 +231,9 @@
 <h3>Versão 1.2.34</h3>
 
 <ul>
-<li>Popup sem dados: debounce (~450 ms) com lista de veiculos estavel em vazio antes de mostrar dialogo; dialogo nao fecha com voltar/toque fora.</li>
-<li>Google Sign-In: BuildConfig com Web Client ID por buildType, helper centralizado e requestIdToken controlado por flag no local.properties.</li>
-<li>README e DIAGNOSTICO_ERROS atualizados; CloudSync/Login usam helper; getGoogleAccount no CloudBackupManager simplificado.</li>
+<li>Popup sem dados: debounce (~450 ms) com lista de veiculos estavel em vazio antes de mostrar o dialogo, reduzindo fecho imediato por emissoes transitarias; dialogo de boas-vindas nao fecha com botao voltar nem toque fora (apenas escolha explicita).</li>
+<li>Google Sign-In: BuildConfig com Web Client ID por buildType (debug definido no Gradle; release via GOOGLE_OAUTH_WEB_CLIENT_ID no local.properties); GoogleSignInHelper centraliza GoogleSignInOptions; requestIdToken so com GOOGLE_SIGN_IN_REQUEST_ID_TOKEN=true no local.properties (por defeito desligado para evitar erro 10 quando o client Web nao esta no mesmo projeto GCP que o client Android).</li>
+<li>README e DIAGNOSTICO_ERROS atualizados (E10, item 7); CloudSync/Login usam o helper; getGoogleAccount no CloudBackupManager simplificado.</li>
 </ul>
 
 </div>
@@ -227,8 +243,8 @@
 <h3>Versão 1.2.33</h3>
 
 <ul>
-<li>Popup sem dados apos reinstalar: dialogo de boas-vindas nao some ao terminar listagem de backups do Drive; estado controlado separado da flag de sessao.</li>
-<li>No mesmo dialogo com conta Google: botao "Restaurar backup" local, alem da lista de backups na nuvem.</li>
+<li>Popup sem dados apos reinstalar: ao entrar com Google, o dialogo de boas-vindas (restaurar backup / comecar do zero) deixa de sumir quando termina a listagem de backups no Drive; o estado do popup e controlado aparte da flag de sessao na composicao.</li>
+<li>No mesmo dialogo com conta Google: botao "Restaurar backup" (ficheiro local no dispositivo), alinhado ao fluxo do visitante, alem da lista de backups na nuvem.</li>
 </ul>
 
 </div>
@@ -238,9 +254,9 @@
 <h3>Versão 1.2.32</h3>
 
 <ul>
-<li>Modo viagem: ao finalizar, odometro final atualiza quilometragem do veiculo e registra historico de KM.</li>
-<li>Navegacao RequireSelectedCar: observacao de carro selecionado com collectAsStateWithLifecycle e valor inicial do ViewModel para evitar redirecionamento indevido.</li>
-<li>Documentos: edicao por ID carrega documento de forma assincrona com indicador de carregamento.</li>
+<li>Modo viagem: ao finalizar a viagem, o odometro final informado atualiza a quilometragem do veiculo e e registado no historico de KM (nota "Fim de viagem (modo viagem)").</li>
+<li>Navegacao RequireSelectedCar: o carro selecionado e observado com collectAsStateWithLifecycle usando o estado atual do ViewModel como valor inicial, para a UI atualizar quando o KM muda e para nao redirecionar por engano para Meus veiculos na primeira frame.</li>
+<li>Documentos: edicao por ID carrega o documento com getDocumentById (assincrono), com indicador de carregamento ate os dados estarem prontos.</li>
 </ul>
 
 </div>
@@ -250,10 +266,10 @@
 <h3>Versão 1.2.30</h3>
 
 <ul>
-<li>Home (proximas manutencoes): ao marcar item como concluido, abre nova manutencao com tipo e KM preenchidos automaticamente.</li>
-<li>Nesse fluxo, calibragem de pneus sugere automaticamente data para 3 meses apos conclusao (editavel).</li>
-<li>Rota add_maintenance passa a aceitar parametros opcionais na query para preenchimento automatico.</li>
-<li>Nova/editar manutencao: "Proximo KM" nao pode ser menor que "KM Troca"; erro em vermelho e botao Salvar desativado ate corrigir.</li>
+<li>Home (proximas manutencoes): ao marcar qualquer item como concluido, abre automaticamente o ecra de nova manutencao com o mesmo tipo de manutencao preenchido (incluindo nome em tipo personalizado) e o campo KM da manutencao com o odometro atual do veiculo no momento em que foi marcado como concluido.</li>
+<li>Nesse fluxo, calibragem de pneus sugere automaticamente a data da proxima manutencao para 3 meses apos a data de conclusao (editavel antes de guardar).</li>
+<li>Rota add_maintenance passa a aceitar parametros opcionais na query (data, tipo, nome customizado, km) para o preenchimento automatico; widget "nova manutencao" continua a abrir o formulario em branco.</li>
+<li>Nova/editar manutencao: o campo "Proximo KM" nao pode ser menor que o "KM Troca" quando este esta preenchido; mensagem de erro em vermelho e botao Salvar desativado ate corrigir.</li>
 </ul>
 
 </div>
@@ -263,7 +279,7 @@
 <h3>Versão 1.2.29</h3>
 
 <ul>
-<li>Widgets: preview do widget "Abastecer agora" atualizado para refletir exatamente o layout final, facilitando visualizacao antes de adicionar.</li>
+<li>Widgets: preview do widget "Abastecer agora" na tela de selecao de widgets atualizado para mostrar exatamente o layout final (nome do veiculo, resumo do ultimo abastecimento e botao "⛽ Abastecer agora"), facilitando ao usuario entender como o widget ficara antes de adicionar.</li>
 </ul>
 
 </div>
@@ -273,9 +289,9 @@
 <h3>Versão 1.2.28</h3>
 
 <ul>
-<li>Widgets: fundos, textos e botoes usam paleta especifica para tema claro/escuro (colors.xml / values-night), melhorando legibilidade e consistencia.</li>
-<li>Widgets: botoes do widget de Acoes rapidas passam a abrir diretamente telas correspondentes via intents/rotas dedicadas.</li>
-<li>Novo widget "Abastecer agora" com nome do veiculo, resumo do ultimo abastecimento e botao para abrir fluxo direto.</li>
+<li>Widgets: fundos, textos e botoes passam a usar paleta especifica de cores para tema claro e escuro (colors.xml / values-night), em vez de cores fixas em cada layout, garantindo melhor legibilidade e consistencia visual nos widgets (CalenCar, Gastos mensais, Acoes rapidas, Alertas criticos, Previsao inteligente e Status do veiculo).</li>
+<li>Widgets: botoes "Nova manutencao", "Atualizar KM" e "Trocar carro" do widget de Acoes rapidas passam a abrir diretamente as telas correspondentes (adicionar manutencao, dialogo de KM na Home e lista de veiculos), usando intents dedicados e rotas especificas no NavGraph, em vez de apenas abrir a Home.</li>
+<li>Widgets: novo widget "Abastecer agora" mostra o nome do veiculo selecionado, resumo do ultimo abastecimento (dias e km desde entao) e botao "⛽ Abastecer agora" que abre diretamente o fluxo de abastecimento no app.</li>
 </ul>
 
 </div>
@@ -285,8 +301,8 @@
 <h3>Versão 1.2.27</h3>
 
 <ul>
-<li>Home: card de quilometragem permite atualizar KM sempre (botao e toque no card), facilitando leituras manuais frequentes.</li>
-<li>Home: montagem de proximas manutencoes/documentos centralizada em HomeViewModel mais rico (HomeUiState), reduzindo logica no HomeScreen.</li>
+<li>Home: card de quilometragem passa a permitir atualizar a KM sempre (botao e toque no card), mesmo quando o app ainda nao recomenda a atualizacao automatica, facilitando registrar leituras manuais frequentes.</li>
+<li>Home: logica de montagem das listas de proximas manutencoes e proximos documentos passa a ser centralizada num HomeViewModel mais rico (HomeUiState), reduzindo logica de dominio dentro do composable HomeScreen e facilitando testes.</li>
 </ul>
 
 </div>
@@ -296,12 +312,20 @@
 <h3>Versão 1.2.26</h3>
 
 <ul>
-<li>Navegacao: helper RequireSelectedCar reutilizavel para telas que exigem veiculo selecionado, reduzindo duplicacao de logica.</li>
-<li>Navegacao: NavGraph principal dividido em sub-grafos por dominio para simplificar manutencao.</li>
-<li>Abastecimentos: acesso sem veiculo selecionado redireciona automaticamente para lista de veiculos.</li>
-<li>Home: conteudo principal extraido para HomeContentSections, mantendo HomeScreen focada em estados e navegacao.</li>
-<li>Base de dados: fallbackToDestructiveMigration ativo apenas em debug; release usa apenas migracoes explicitas.</li>
-<li>FIPE/Dominio/Backup/Home: melhorias estruturais com use cases dedicados, estado tipado e coordenacao centralizada de backup/workers.</li>
+<li>Navegacao: helper RequireSelectedCar reutilizavel para telas que exigem veiculo selecionado (Historico, Dashboard, Mapa de manutencoes, Checklist, Viagem, Abastecimentos, Documentos, Importacao CSV), reduzindo duplicacao de logica e mantendo o mesmo comportamento.</li>
+<li>Navegacao: NavGraph principal dividido em sub-grafos por dominio (manutencoes, abastecimentos, documentos, configuracoes/backup, resumos/estatisticas, veiculos), deixando o NavHost mais simples e facil de manter.</li>
+<li>Abastecimentos: ao tentar aceder ao fluxo de abastecimento sem ter veiculo selecionado, o app redireciona automaticamente para a lista de veiculos em vez de falhar silenciosamente.</li>
+<li>Home: conteudo principal extraido para composable dedicado (HomeContentSections), deixando HomeScreen mais focada em orquestrar estados e navegacao sem alterar comportamento.</li>
+<li>Base de dados: fallbackToDestructiveMigration ativado apenas em builds de debug (em release, apenas migracoes explicitas sao usadas), reduzindo o risco de perda acidental de dados em producao.</li>
+<li>FIPE: repositorio passa a devolver Result&lt;List&lt;BrandModelSuggestion&gt;&gt;; AddEditCarViewModel expõe FipeSearchState (Idle/Loading/Success/Error) para a UI poder mostrar estados de loading e mensagens de erro amigaveis quando a API estiver indisponivel.</li>
+<li>Dominio: criado BuildUpcomingMaintenancesUseCase para montar a lista de proximas manutencoes (deduplicacao, ordenacao, mensagens e flags de atraso/KM) reutilizavel entre telas.</li>
+<li>Dominio: criado GetUpcomingDocumentsUseCase para calcular a lista de documentos por vencer (janela de dias configuravel), usado na Home para a secao "Proximos vencimentos".</li>
+<li>Backup: criado BackupCoordinator para centralizar a criacao de backups locais e upload para a nuvem, agora como classe injetavel via Hilt, reutilizada pelos workers AutoBackupWorker e CloudBackupAfterChangeWorker.</li>
+<li>Backup: workers de backup passam a usar constraints do WorkManager (rede, bateria e carregamento) mais conservadoras e foram migrados para HiltWorker, facilitando testes e injecao de dependencias.</li>
+<li>Base de dados: lista de migracoes Room centralizada em CalenCarDatabase.ALL_MIGRATIONS e reutilizada tanto na criacao manual do banco quanto no DatabaseModule, garantindo que todas as migracoes (incluindo 13-&gt;14) sejam sempre aplicadas de forma consistente.</li>
+<li>Home: logica de montagem das listas de proximas manutencoes e proximos documentos passa a usar um HomeViewModel dedicado, que delega para os use cases BuildUpcomingMaintenancesUseCase e GetUpcomingDocumentsUseCase em vez de instanciar use cases diretamente na UI.</li>
+<li>Home: textos da tela (botoes, secoes, lista de vencimentos, itens do menu lateral, calendario) migrados para strings.xml, facilitando traducao e padronizacao de mensagens.</li>
+<li>Home: bloco de dicas (homeTips) passa a usar um modelo tipado (HomeTip/HomeTipType) em vez de lista bruta de strings, permitindo personalizar cores e conteudos por tipo de dica sem alterar a UI principal.</li>
 </ul>
 
 </div>
@@ -311,9 +335,9 @@
 <h3>Versão 1.2.25</h3>
 
 <ul>
-<li>BugFix: tabela FIPE sendo carregada de forma incorreta.</li>
-<li>Ajuste nos icones do logo.</li>
-<li>Placa: campo dividido em duas partes (AAA-0000) com validacoes para evitar formatacoes invalidas.</li>
+<li>BugFix: tabela fipe sendo carrefada de forma incorreta.</li>
+<li>Ajuste nos icones do logo</li>
+<li>Placa: campo dividido em duas partes (AAA-0000); primeiro campo aceita apenas letras maiusculas (3), segundo campo aceita 4 caracteres com no maximo 1 letra maiuscula, evitando formatacoes invalidas (ex.: 1D90).</li>
 </ul>
 
 </div>
@@ -323,8 +347,8 @@
 <h3>Versão 1.2.24</h3>
 
 <ul>
-<li>Release: R8 ativado (minify + shrink) para reduzir tamanho do app, com copia de mapping para raiz apos bundleRelease.</li>
-<li>Release: simbolos nativos (SYMBOL_TABLE) e zip copiado para raiz para upload na Play Console.</li>
+<li>Release: R8 ativado (minify + shrink) para reduzir tamanho do app; ficheiro de desofuscacao (mapping) e copiado para a raiz apos bundleRelease para upload na Play Console.</li>
+<li>Release: simbolos nativos (ndk.debugSymbolLevel SYMBOL_TABLE) e zip copiado para a raiz para upload na Play Console (analise de falhas e ANRs).</li>
 </ul>
 
 </div>
@@ -334,7 +358,7 @@
 <h3>Versão 1.2.23</h3>
 
 <ul>
-<li>Splash: removida tela preta em Compose; arranque passa a usar apenas splash nativo do Android 12+.</li>
+<li>Splash: removida a tela preta em Compose (delay 1,5 s); o arranque do app usa apenas o splash nativo do Android 12+ com icone ic_launcher_foreground em fundo preto (Theme.CalenCar.Splash + installSplashScreen).</li>
 </ul>
 
 </div>
@@ -344,7 +368,7 @@
 <h3>Versão 1.2.22</h3>
 
 <ul>
-<li>Abastecimentos: odometro nao pode ser menor que anterior nem que o atual do veiculo; erro em vermelho e botao Salvar desativado ate corrigir.</li>
+<li>Abastecimentos: o odometro nao pode ser menor que o anterior nem que o atual do veiculo; mensagem em vermelho e botao Salvar desativado ate corrigir.</li>
 </ul>
 
 </div>
@@ -364,8 +388,8 @@
 <h3>Versão 1.2.20</h3>
 
 <ul>
-<li>BugFix: tela de detalhes da manutencao com botao de voltar no topo para retornar a tela anterior.</li>
-<li>BugFix: popup "Bem-vindo ao CalenCar" passa a aparecer apenas uma vez por sessao ao voltar para Home.</li>
+<li>bugfix: Tela detalhes da manutencao: botao de voltar no topo para retornar a tela anterior.</li>
+<li>bugfix: Popup "Bem-vindo ao CalenCar" (sem dados) passa a aparecer apenas uma vez por sessao ao voltar para a Home, evitando reaparecer sempre que se navega entre telas.</li>
 </ul>
 
 </div>
@@ -376,7 +400,7 @@
 
 <ul>
 <li>Tela de login: logo CalenCar em tamanho maior (200dp).</li>
-<li>Calendario: ao clicar em data com manutencao, abre manutencao da data em vez de adicionar nova.</li>
+<li>Calendario: ao clicar numa data com cor diferente (data em que ha manutencao feita ou programada), abre a manutencao dessa data em vez de adicionar nova.</li>
 </ul>
 
 </div>
@@ -386,9 +410,9 @@
 <h3>Versão 1.2.18</h3>
 
 <ul>
-<li>Popup de avaliar na Play Store aparece apenas uma vez por sessao ao abrir o app.</li>
-<li>Backup: botoes Compartilhar, Guardar copia em... e Novo backup passam a aparecer em coluna.</li>
-<li>Splash screen usa apenas icone do app em fundo preto (AndroidX Splash Screen API).</li>
+<li>Popup de avaliar na Play Store: passa a aparecer apenas uma vez por sessao (ao abrir o app), nao ao voltar a tela Home.</li>
+<li>Backup: botoes Compartilhar, Guardar copia em... e Novo backup apos criar backup passam a aparecer em coluna para evitar quebra de texto.</li>
+<li>Ao abrir o app: splash screen usa apenas o icone do app em fundo preto; removido o logo Android (integracao com AndroidX Splash Screen API).</li>
 </ul>
 
 </div>
@@ -398,11 +422,16 @@
 <h3>Versão 1.2.17</h3>
 
 <ul>
-<li>Tela Sobre: verificacao automatica de atualizacao via In-App Updates da Play Store, com dialogo para atualizar quando houver nova versao.</li>
-<li>Tela Sobre: para app fora da Play Store (erro -10), mensagem amigavel e botao "Abrir Play Store".</li>
-<li>Popup de avaliacao na Play Store ao abrir app, reaparecendo ate utilizador clicar em "Avaliar".</li>
-<li>Backup/restauro: manutencoes concluidas passam a ser guardadas/restauradas corretamente (isDone).</li>
-<li>Fluxos de backup/sincronizacao e popup sem veiculos refinados, com mensagens de sucesso e opcao de guardar copia local.</li>
+<li>Tela Sobre: verificacao automatica de atualizacao usando a API oficial In-App Updates do Google Play. Botao "Verificar atualizacoes" consulta a Play Store; se houver nova versao, exibe dialogo com opcao de atualizar; caso contrario, exibe "Seu aplicativo ja esta atualizado". Tratamento de erros e compativel com instalacao pela Play Store.</li>
+<li>Tela Sobre: quando o app nao foi instalado pela Play Store (erro -10), exibe mensagem amigavel e botao "Abrir Play Store" em vez da mensagem tecnica.</li>
+<li>Ao abrir o app: popup a pedir avaliacao na Play Store ("Avaliar" ou "Nao agora"); reaparece em cada abertura ate o utilizador clicar em "Avaliar".</li>
+<li>Backup/restauro: manutencoes marcadas como concluidas passam a ser guardadas e restauradas corretamente (campo isDone incluido no backup).</li>
+<li>Popup "Restaurar backup / Comecar do zero": a escolha "Comecar do zero" e guardada nas preferencias; ao reabrir o app o popup nao volta a aparecer.</li>
+<li>Sem veiculos: opcao Restaurar backup ou Comecar do zero passa a aparecer em popup sobre a Home em vez de ecra dedicado.</li>
+<li>Configuracoes de backup: "Ativar backup automatico" passa a vir por defeito ativado; "Upload automatico para nuvem" passa a vir ativado por defeito quando a conta Google esta conectada.</li>
+<li>Sincronizacao na nuvem (Google Drive) passa a estar apenas em Backup e Restauracao; removida de Configuracoes. Botao "Backup e Restauracao" em Configuracoes abre a tela onde se acede a "Gerenciar Sincronizacao com Google Drive".</li>
+<li>Ao terminar de criar um backup ou de restaurar um backup, e mostrada uma mensagem (snackbar) a informar que a operacao foi concluida com sucesso.</li>
+<li>Backup: opcao "Guardar copia em..." permite guardar uma copia do backup numa pasta a escolha (ex.: Documentos, Transferencias); o ficheiro nao e apagado ao desinstalar o app.</li>
 </ul>
 
 </div>
@@ -412,11 +441,11 @@
 <h3>Versão 1.2.16</h3>
 
 <ul>
-<li>Tipo de veiculo persistido corretamente ao editar (Carro, Motocicleta, Caminhao/Onibus).</li>
-<li>Banco Room: nova coluna vehicleType, migration 13-&gt;14 e versao do banco atualizada para 14.</li>
-<li>Interface: textos para usuario trocam "carro" por "veiculo" onde aplicavel.</li>
-<li>Backup: tamanho de arquivo exibido com unidade adequada (B, KB, MB, GB).</li>
-<li>Sincronizar na hora: sem conta Google conectada, botao abre tela de Backup na Nuvem para conectar.</li>
+<li>Tipo de veiculo persistido: ao editar um veiculo (ex.: moto), o campo "Tipo de veiculo" exibe corretamente o valor salvo (Carro, Motocicleta ou Caminhao/Onibus).</li>
+<li>Banco Room: nova coluna vehicleType na tabela cars; migration 13-&gt;14; versao do banco atualizada para 14.</li>
+<li>Interface: textos visiveis ao usuario que diziam "carro" passam a usar "veiculo" onde aplicavel (listas, widgets, configuracoes, resumos, etc.).</li>
+<li>Backup: tamanho do arquivo exibido com unidade adequada (B, KB, MB, GB) na tela de backup e na nuvem, em vez de sempre em MB.</li>
+<li>Sincronizar na hora: quando a conta Google nao esta conectada, o botao "Conectar conta Google" abre a tela de Backup na Nuvem para o usuario conectar.</li>
 <li>Troca do logo.</li>
 </ul>
 
@@ -427,7 +456,7 @@
 <h3>Versão 1.2.14</h3>
 
 <ul>
-<li>Billing: suporte correto a produto vitalicio (INAPP) e assinaturas (SUBS) premium_subscription com base plans, incluindo restauracao/sincronizacao e logs detalhados.</li>
+<li>Billing: suporte correto a produto vitalicio (INAPP) e assinaturas (SUBS) premium_subscription (mensal/anual) com base plans, incluindo restauracao e sincronizacao, alem de logs detalhados para diagnostico.</li>
 </ul>
 
 </div>
@@ -438,7 +467,7 @@
 
 <ul>
 <li>Menu lateral passa a seguir automaticamente o tema claro/escuro do app.</li>
-<li>Premium: sincroniza assinaturas mensal/anual/vitalicia com estado local e remove premium sem compras ativas.</li>
+<li>Premium: sincroniza assinaturas mensal/anual/vitalicia com o estado local e remove premium quando nao ha mais compras ativas.</li>
 </ul>
 
 </div>
@@ -448,10 +477,10 @@
 <h3>Versão 1.2.12</h3>
 
 <ul>
-<li>Tela de cadastro de carro: melhoria na digitacao da placa e formatacao automatica com hifen apenas ao salvar.</li>
-<li>Tela de login inicial: escolha entre Google (com permissao do Drive) ou visitante, com visual atualizado.</li>
-<li>Tela adicionar/editar veiculo: tipo de veiculo e busca Marca/Modelo pela API FIPE com sugestoes.</li>
-<li>Home: padding inferior na lista para o botao + nao cobrir o bloco Documentos e vencimentos.</li>
+<li>Tela de cadastro de carro: melhora na digitacao da placa (cursor nao pula mais) e formatacao automatica da placa com hifen apenas ao salvar.</li>
+<li>Tela de login inicial: escolha entre entrar com Google (ja solicitando permissao do Google Drive) ou continuar como visitante, com visual atualizado mostrando o logo CalenCar e o texto "Seu calendario de veiculos."</li>
+<li>Tela adicionar/editar veiculo: tipo de veiculo (Carro, Motocicleta, Caminhao/Onibus), campo unico Marca/Modelo com busca pela API FIPE (sem token); sugestoes ao digitar (ex.: "fiat palio" mostra Fiat Palio).</li>
+<li>Home: padding inferior na lista para o botao "+" nao cobrir o bloco Documentos e vencimentos.</li>
 </ul>
 
 </div>
@@ -461,7 +490,7 @@
 <h3>Versão 1.2.11</h3>
 
 <ul>
-<li>Tela Premium: planos mensal e anual com precos da Play Store, escolha de plano, restauracao de compra e erros mais detalhados.</li>
+<li>Tela Premium: planos mensal e anual com precos puxados da Play Store, escolha de plano, restauracao de compra e mensagens de erro mais detalhadas.</li>
 </ul>
 
 </div>
@@ -471,8 +500,8 @@
 <h3>Versão 1.2.6</h3>
 
 <ul>
-<li>Tela Sobre: indica se o app esta atualizado em relacao a Play Store e permite abrir pagina do app quando desatualizado.</li>
-<li>Politicas de privacidade adicionadas na tela Sobre.</li>
+<li>Tela Sobre: indica se o app esta atualizado em relacao a versao da Play Store e, se estiver desatualizado, permite abrir diretamente a pagina do app na Play Store ao tocar no aviso.</li>
+<li>Politicas de privacidade adicionado na tela sobre.</li>
 </ul>
 
 </div>
@@ -483,8 +512,8 @@
 
 <ul>
 <li>Backup completo do app: agora salva tambem abastecimentos, historico de KM, documentos do veiculo, checklists de revisao, tipos de manutencao customizados e configuracoes avancadas.</li>
-<li>Restauracao aprimorada: ao restaurar backup, todos esses dados adicionais sao recuperados com carros e manutencoes.</li>
-<li>Proximas manutencoes: agora mostram dias e km restantes ate a proxima troca, usando nextDate/nextKm ou calculo por intervalos padrao configurados.</li>
+<li>Restauracao aprimorada: ao restaurar um backup, todos esses dados adicionais sao recuperados junto com carros e manutencoes.</li>
+<li>Proximas manutencoes: agora mostram tambem dias restantes e km restantes ate a proxima troca, usando nextDate/nextKm ou, quando vazio, calculando a partir do KM da ultima manutencao somado aos intervalos padrao configurados nas definicoes avancadas.</li>
 </ul>
 
 </div>
