@@ -21,6 +21,40 @@
 
 <div class="version">
 
+<h3>Versão 1.2.59</h3>
+
+<ul>
+<li>Widgets: os 7 widgets agora atualizam imediatamente após qualquer alteração (carro, manutenção, abastecimento ou KM); antes só o widget principal atualizava na hora, os outros esperavam até 24h para refletir mudanças.</li>
+<li>Widget de Gastos Mensais: corrigido valor do carro sempre aparecer como R$ 0,00 (erro de correspondência interna do nome do carro).</li>
+<li>Premium: corrigida conexão duplicada com a Play Store ao entrar na tela Premium várias vezes, que podia deixar uma compra presa no callback errado.</li>
+<li>Backup e Sincronização com a Nuvem: mensagens de erro mais detalhadas ao criar backup ou enviar para o Google Drive, em vez de um aviso genérico.</li>
+<li>Scanner OBD2: conexão Bluetooth com tempo limite (antes podia ficar preso em "Conectando..." para sempre em alguns aparelhos).</li>
+<li>Scanner OBD2: uma leitura instável de velocidade, temperatura ou carga do motor deixa de descartar todas as outras leituras daquele ciclo.</li>
+<li>Estabilidade: migrações do banco de dados agora têm teste automatizado real, reduzindo o risco de erro em futuras atualizações.</li>
+<li>Nova manutenção: cálculo do "Próximo KM" sugerido unificado num único lugar, eliminando risco de divergência entre o valor mostrado e o valor realmente salvo.</li>
+</ul>
+
+</div>
+
+<div class="version">
+
+<h3>Versão 1.2.58</h3>
+
+<ul>
+<li>Segurança: backups agora podem ser protegidos com senha (opcional) ao criar; a mesma senha é pedida ao restaurar (arquivo local ou nuvem) quando o backup tiver sido criado com senha.</li>
+<li>Restauração de backup: fotos de manutenções e de veículos voltam a ser restauradas corretamente (antes ficavam num diretório temporário e eram perdidas).</li>
+<li>Restauração de backup: a opção "Substituir dados existentes" agora realmente atualiza carros, manutenções, abastecimentos, histórico de KM e documentos já existentes, em vez de apenas duplicar os dados.</li>
+<li>Excluir veículo: agora remove também abastecimentos, documentos e checklists de revisão associados, evitando dados órfãos no banco.</li>
+<li>Premium: uma falha temporária ao consultar a Play Store (sem internet, serviço indisponível, etc.) deixa de remover o status premium; só é removido quando a Play Store confirma que não há mais compra ativa.</li>
+<li>Segurança: adicionada verificação da assinatura da compra na Play Store antes de liberar o premium, dificultando ativação fraudulenta em dispositivos com root ou Play Store modificada.</li>
+<li>Estabilidade: unificada a instância do banco de dados usada pelo app e pelos widgets, evitando que os widgets mostrem dados desatualizados após alterações.</li>
+<li>Modo desenvolvedor: reforçada a proteção de acesso às ferramentas internas (não afeta o uso normal do app).</li>
+</ul>
+
+</div>
+
+<div class="version">
+
 <h3>Versão 1.2.57</h3>
 
 <ul>
