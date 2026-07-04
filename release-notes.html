@@ -21,6 +21,20 @@
 
 <div class="version">
 
+<h3>Versão 1.2.62</h3>
+
+<ul>
+<li>Lembretes de manutenção: eliminado um risco de colisão entre o lembrete normal e o alerta de KM de manutenções diferentes, que em casos raros podiam usar o mesmo identificador interno e um sobrescrever o outro.</li>
+<li>Desempenho: adicionados índices no banco de dados para consultas de manutenções, abastecimentos e histórico de KM por veículo, deixando essas telas mais rápidas em veículos com muito histórico.</li>
+<li>Segurança: logs de depuração internos (nomes de veículos, e-mail da conta Google, etc.) deixam de ser gravados no logcat em builds de produção.</li>
+<li>Estabilidade: nova migração do banco de dados coberta por teste automatizado real, reduzindo o risco de erro em futuras atualizações.</li>
+<li>Manutenção interna do código: removida duplicação em backup, notificações, integração com Google Drive/Calendar, widgets e telas de diagnóstico OBD2, sem alterar o comportamento visível do app.</li>
+</ul>
+
+</div>
+
+<div class="version">
+
 <h3>Versão 1.2.61</h3>
 
 <ul>
