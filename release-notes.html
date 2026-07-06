@@ -21,6 +21,19 @@
 
 <div class="version">
 
+<h3>Versão 1.2.65</h3>
+
+<ul>
+<li>Modo viagem: o caminho percorrido passa a ser gravado via GPS durante a viagem e pode ser visto depois no mapa, ao tocar numa viagem concluída no histórico e escolher "Ver caminho no mapa". Sem permissão de localização concedida, a viagem continua funcionando normalmente, só sem o mapa do trajeto.</li>
+<li>Importar CSV: a tela de importação de manutenções (Histórico → ⋮ → Importar CSV) mostrava "Importação concluída com sucesso" mas na verdade não salvava nada no banco de dados. Agora salva de verdade; também foi adicionado o acesso a essa tela e à de "Exportar CSV" (Premium), que já existiam prontas mas não tinham nenhum botão para abri-las.</li>
+<li>Painel OBD2: corrigido histórico de sensores, viagens automáticas e alertas que não eram separados por veículo — quem usa o Scanner OBD2 em mais de um carro tinha os dados de todos misturados nos gráficos, médias e relatório semanal do Painel. Como não havia como recuperar corretamente a que carro cada registo antigo pertencia, essa atualização reinicia esse histórico específico (ele se reconstrói normalmente com o uso).</li>
+<li>Manutenção interna do código: removido código morto (componente de câmera nunca utilizado e métodos de banco de dados sem nenhuma chamada), reduzindo o tamanho do app.</li>
+</ul>
+
+</div>
+
+<div class="version">
+
 <h3>Versão 1.2.64</h3>
 
 <ul>
