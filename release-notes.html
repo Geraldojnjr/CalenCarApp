@@ -21,6 +21,20 @@
 
 <div class="version">
 
+<h3>Versão 1.2.66</h3>
+
+<ul>
+<li>Correção importante: lembretes de manutenção podiam falhar silenciosamente em aparelhos Android 12+ se a permissão de alarmes exatos fosse revogada, ou se um lembrete de outra manutenção do mesmo carro falhasse ao agendar; agora cada lembrete é agendado de forma isolada (uma falha não impede as demais) e cai para um alarme aproximado em vez de simplesmente não disparar.</li>
+<li>Restauração de backup: falha ao restaurar um veículo específico agora aparece na lista de itens não restaurados, junto com abastecimentos, KM, documentos e checklists (antes só era registada no log); um checksum inválido no arquivo de backup também passa a ser avisado na tela em vez de só no log.</li>
+<li>Painel OBD2: adicionado um aviso na abertura do app para quem tiver o histórico do Painel reiniciado (ver 1.2.65), explicando o que aconteceu em vez do histórico simplesmente sumir sem explicação.</li>
+<li>Segurança: em builds de loja sem a chave de licenciamento configurada, compras não verificáveis deixam de ser aceitas automaticamente como premium.</li>
+<li>Manutenção interna do código: reorganização das telas de Backup, Modo Viagem e Adicionar/Editar Manutenção em componentes menores, eliminação de duplicação entre várias telas e ViewModels, e novos testes automatizados de interface para os fluxos principais (cadastro de veículo, manutenção, backup/restauração, modo viagem) — sem alterar o comportamento visível do app.</li>
+</ul>
+
+</div>
+
+<div class="version">
+
 <h3>Versão 1.2.65</h3>
 
 <ul>
